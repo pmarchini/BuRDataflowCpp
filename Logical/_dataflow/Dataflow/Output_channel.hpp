@@ -16,7 +16,7 @@
 
 
 
-/*Template class for every type in input*/
+/*Template class for every type in output*/
 class Output_channel {
 	
 	void* value;
@@ -62,11 +62,11 @@ class Output_channel {
 		switch (this->Type)
 		{
 			case dataflow::_INT:	
-				//value = malloc(sizeof(int));
+				value = malloc(sizeof(int));
 				static_cast<int*>(value);
 				break;
 			case dataflow::_FLOAT:
-				//value = malloc(sizeof(float));
+				value = malloc(sizeof(float));
 				static_cast<float*>(value);
 				break;
 			case dataflow::_CHAR:
@@ -74,11 +74,11 @@ class Output_channel {
 				static_cast<char*>(value);
 				break;
 			case dataflow::_DOUBLE:
-				//value = malloc(sizeof(double));
+				value = malloc(sizeof(double));
 				static_cast<double*>(value);
 				break;	
 			case dataflow::_BOOL:
-				//value = malloc(sizeof(plcbit));
+				value = malloc(sizeof(plcbit));
 				static_cast<plcbit*>(value);
 				break;
 			default:

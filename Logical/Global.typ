@@ -12,5 +12,6 @@ TYPE
 	DataFlow : 	STRUCT 
 		O_Out : BOOL;
 		I_In : BOOL;
+		I_Enable : BOOL;
 	END_STRUCT;
 END_TYPE

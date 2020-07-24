@@ -114,13 +114,14 @@ namespace dataflow
 		}
 	};
 	
-	#define _A_INPUT 0
-	#define _B_INPUT 1
+	#define _1_INPUT 0
+	#define _2_INPUT 1
 	
-	#define _A_OUTPUT 0
-	#define _B_OUTPUT 1
+	#define _1_OUTPUT 0
+	#define _2_OUTPUT 1
 	
-	//This class in only a test and has empty void methods
+	//NOT bool function
+	//Now is used as test
 	class NOT : public INode
 	{
 		
@@ -145,9 +146,9 @@ namespace dataflow
 			if(!this->error)
 			{
 				/*Static cast of input void pointer*/
-				auto tmp_in = static_cast<plcbit*>(this->inputs[_A_INPUT]->getVal());
+				auto tmp_in = static_cast<plcbit*>(this->inputs[_1_INPUT]->getVal());
 				/*Static cast of output void pointer*/
-				auto tmp_out = static_cast<plcbit*>(this->GetOutputPtr(_A_OUTPUT));
+				auto tmp_out = static_cast<plcbit*>(this->GetOutputPtr(_1_OUTPUT));
 				if(*tmp_in)
 				{
 					*tmp_out = false;
