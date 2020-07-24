@@ -43,8 +43,8 @@ namespace dataflow
 		virtual const char* what() const throw()
 		{
 		return "Manager exception : too many nodes";
-	}
-		} ManagerOutOfBoundEx;
+		}
+	} ManagerOutOfBoundEx;
 
 #endif
 
@@ -171,17 +171,20 @@ namespace dataflow
 		/// <returns>void</returns>  
 		void ClearManager()
 		{
-			try
+			if(!this->nodes.empty())
 			{
-				this->nodes.clear();
-			}
-			catch (std::exception ex)
-			{
-				this->ErrorState = true;
+				try
+				{
+					this->nodes.clear();
+				}
+				catch (std::exception ex)
+				{
+					this->ErrorState = true;
 #ifdef _DATAFLOW_LOGGER
-				/*TODO -> add logger*/
+					/*TODO -> add logger*/
 #endif
-			}	
+				}	
+			}
 		}
 	};
 	

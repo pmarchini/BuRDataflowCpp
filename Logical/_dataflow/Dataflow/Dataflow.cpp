@@ -29,6 +29,7 @@ bool _trigflag;
 
 #define _TEST_NODE_A 0
 #define _TEST_NODE_B 1
+#define _TEST_NODE_C 2
 
 void ManagerSetup()
 {
@@ -36,6 +37,7 @@ void ManagerSetup()
 	t_man->ClearManager();
 	t_man->AddNode(new dataflow::NOT()); // _TEST_NODE_A
 	t_man->AddNode(new dataflow::NOT()); // _TEST_NODE_B
+	t_man->AddNode(new dataflow::NOT()); // _TEST_NODE_C
 	t_man->InitExecution();
 	/*Set nodes links*/
 	/***********************************************/
@@ -52,12 +54,20 @@ void ManagerSetup()
 	 *when an output channel is created its memory is allocated for the type declared
 	 */
 	ptr->SetInput(t_man->GetNodePtr(_TEST_NODE_A)->GetOutputPtr(0),0); 
+	//ptr->SetOutput(&test.O_Out,0); //Forcing output to a different location
+//_TEST_NODE_C
+	ptr = t_man->GetNodePtr(_TEST_NODE_C);
+	/*Output is created with node init
+	 *when an output channel is created its memory is allocated for the type declared
+	 */
+	ptr->SetInput(t_man->GetNodePtr(_TEST_NODE_B)->GetOutputPtr(0),0); 
 	ptr->SetOutput(&test.O_Out,0); //Forcing output to a different location
 }
 
 void _INIT DataflowInit(void)
 {
-	//ManagerSetup();
+	t_man = new dataflow::Manager();
+	ManagerSetup();
 }
 
 
