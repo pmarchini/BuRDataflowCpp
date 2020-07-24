@@ -22,7 +22,7 @@ namespace dataflow
 	{
 		virtual const char* what() const throw()
 		{
-			return "Node exception happened";
+			return "Node exception";
 		}
 	} NodeEx;
 		
